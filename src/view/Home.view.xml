@@ -198,6 +198,258 @@
 					</VBox>
 				</f:GridListItem>
 			</f:GridList>
+
+			<f:GridList
+				class="sapUiContentPadding"
+				id="machine-2"
+				growing="true"
+				growingThreshold="9">
+				<f:headerToolbar>
+					<Toolbar>
+						<Title text="Maschine 2" />
+						<ToolbarSpacer />
+					</Toolbar>
+				</f:headerToolbar>
+
+				<f:customLayout>
+					<grid:GridBoxLayout boxWidth="12rem" />
+				</f:customLayout>
+
+				<!-- List item for readiness -->
+				<f:GridListItem>
+					<VBox>
+						<VBox class="sapUiSmallMargin">
+							<layoutData>
+								<FlexItemData growFactor="0" shrinkFactor="1" />
+							</layoutData>
+							<HBox justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
+								<core:Icon
+									src="sap-icon://machine"
+									size="2rem"
+									color="Default"
+									class="sapUiSmallMarginBottom" />
+								<ObjectStatus text="{= ${halle>/machines/two/ready} ? 'Bereit' : 'Abgestellt' }"
+									state="{= ${halle>/machines/two/ready} ? 'Success' : 'Warning' }" />
+							</HBox>
+							<Title text="Status Maschine 2" wrapping="true" />
+							<Label
+								text="{= ${halle>/machines/two/ready} ? 'Maschine 2 produziert' : 'Produktion an Maschine 2 ruht' }"
+								wrapping="true" />
+						</VBox>
+					</VBox>
+				</f:GridListItem>
+
+				<!-- List item for quantity -->
+				<f:GridListItem>
+					<VBox>
+						<VBox class="sapUiSmallMargin">
+							<layoutData>
+								<FlexItemData growFactor="0" shrinkFactor="1" />
+							</layoutData>
+							<HBox justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
+								<core:Icon
+									src="sap-icon://product"
+									size="2rem"
+									color="Default"
+									class="sapUiSmallMarginBottom" />
+								<ObjectStatus text="{halle>/machines/two/quantity}" />
+							</HBox>
+							<Title text="Produzierte Menge" wrapping="true" />
+							<Label text="Seit dem letzten Rüstvorgang" wrapping="true" />
+						</VBox>
+					</VBox>
+				</f:GridListItem>
+
+
+				<!-- List item for pressure temp -->
+				<f:GridListItem>
+					<VBox>
+						<VBox class="sapUiSmallMargin">
+							<layoutData>
+								<FlexItemData growFactor="0" shrinkFactor="1" />
+							</layoutData>
+							<HBox justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
+								<core:Icon
+									src="sap-icon://bar-chart"
+									size="2rem"
+									color="Default"
+									class="sapUiSmallMarginBottom" />
+								<ObjectStatus text="{halle>/machines/two/pressure}" />
+							</HBox>
+							<Title text="Druck" wrapping="true" />
+							<Label text="in bar" wrapping="true" />
+						</VBox>
+					</VBox>
+				</f:GridListItem>
+
+				<!-- List item for outer temp -->
+				<f:GridListItem>
+					<VBox>
+						<VBox class="sapUiSmallMargin">
+							<layoutData>
+								<FlexItemData growFactor="0" shrinkFactor="1" />
+							</layoutData>
+							<HBox justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
+								<core:Icon
+									src="sap-icon://temperature"
+									size="2rem"
+									color="Default"
+									class="sapUiSmallMarginBottom" />
+								<ObjectStatus text="{halle>/machines/two/inner-temp}" />
+							</HBox>
+							<Title text="Innentemperatur" wrapping="true" />
+							<Label text="in °C" wrapping="true" />
+						</VBox>
+					</VBox>
+				</f:GridListItem>
+
+				<!-- List item for outer temp -->
+				<f:GridListItem>
+					<VBox>
+						<VBox class="sapUiSmallMargin">
+							<layoutData>
+								<FlexItemData growFactor="0" shrinkFactor="1" />
+							</layoutData>
+							<HBox justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
+								<core:Icon
+									src="sap-icon://temperature"
+									size="2rem"
+									color="Default"
+									class="sapUiSmallMarginBottom" />
+								<ObjectStatus text="{halle>/machines/two/outer-temp}" />
+							</HBox>
+							<Title text="Außentemperatur" wrapping="true" />
+							<Label text="In °C" wrapping="true" />
+						</VBox>
+					</VBox>
+				</f:GridListItem>
+			</f:GridList>
+
+			<f:GridList
+				class="sapUiContentPadding"
+				id="machine-3"
+				growing="true"
+				growingThreshold="9">
+				<f:headerToolbar>
+					<Toolbar>
+						<Title text="Maschine 3" />
+						<ToolbarSpacer />
+					</Toolbar>
+				</f:headerToolbar>
+
+				<f:customLayout>
+					<grid:GridBoxLayout boxWidth="12rem" />
+				</f:customLayout>
+
+				<!-- List item for readiness -->
+				<f:GridListItem>
+					<VBox>
+						<VBox class="sapUiSmallMargin">
+							<layoutData>
+								<FlexItemData growFactor="0" shrinkFactor="1" />
+							</layoutData>
+							<HBox justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
+								<core:Icon
+									src="sap-icon://machine"
+									size="2rem"
+									color="Default"
+									class="sapUiSmallMarginBottom" />
+								<ObjectStatus text="{= ${halle>/machines/three/ready} ? 'Bereit' : 'Abgestellt' }"
+									state="{= ${halle>/machines/three/ready} ? 'Success' : 'Warning' }" />
+							</HBox>
+							<Title text="Status Maschine 3" wrapping="true" />
+							<Label
+								text="{= ${halle>/machines/three/ready} ? 'Maschine 3 produziert' : 'Produktion an Maschine 3 ruht' }"
+								wrapping="true" />
+						</VBox>
+					</VBox>
+				</f:GridListItem>
+
+				<!-- List item for quantity -->
+				<f:GridListItem>
+					<VBox>
+						<VBox class="sapUiSmallMargin">
+							<layoutData>
+								<FlexItemData growFactor="0" shrinkFactor="1" />
+							</layoutData>
+							<HBox justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
+								<core:Icon
+									src="sap-icon://product"
+									size="2rem"
+									color="Default"
+									class="sapUiSmallMarginBottom" />
+								<ObjectStatus text="{halle>/machines/three/quantity}" />
+							</HBox>
+							<Title text="Produzierte Menge" wrapping="true" />
+							<Label text="Seit dem letzten Rüstvorgang" wrapping="true" />
+						</VBox>
+					</VBox>
+				</f:GridListItem>
+
+
+				<!-- List item for pressure temp -->
+				<f:GridListItem>
+					<VBox>
+						<VBox class="sapUiSmallMargin">
+							<layoutData>
+								<FlexItemData growFactor="0" shrinkFactor="1" />
+							</layoutData>
+							<HBox justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
+								<core:Icon
+									src="sap-icon://bar-chart"
+									size="2rem"
+									color="Default"
+									class="sapUiSmallMarginBottom" />
+								<ObjectStatus text="{halle>/machines/three/pressure}" />
+							</HBox>
+							<Title text="Druck" wrapping="true" />
+							<Label text="in bar" wrapping="true" />
+						</VBox>
+					</VBox>
+				</f:GridListItem>
+
+				<!-- List item for outer temp -->
+				<f:GridListItem>
+					<VBox>
+						<VBox class="sapUiSmallMargin">
+							<layoutData>
+								<FlexItemData growFactor="0" shrinkFactor="1" />
+							</layoutData>
+							<HBox justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
+								<core:Icon
+									src="sap-icon://temperature"
+									size="2rem"
+									color="Default"
+									class="sapUiSmallMarginBottom" />
+								<ObjectStatus text="{halle>/machines/three/inner-temp}" />
+							</HBox>
+							<Title text="Innentemperatur" wrapping="true" />
+							<Label text="in °C" wrapping="true" />
+						</VBox>
+					</VBox>
+				</f:GridListItem>
+
+				<!-- List item for outer temp -->
+				<f:GridListItem>
+					<VBox>
+						<VBox class="sapUiSmallMargin">
+							<layoutData>
+								<FlexItemData growFactor="0" shrinkFactor="1" />
+							</layoutData>
+							<HBox justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
+								<core:Icon
+									src="sap-icon://temperature"
+									size="2rem"
+									color="Default"
+									class="sapUiSmallMarginBottom" />
+								<ObjectStatus text="{halle>/machines/three/outer-temp}" />
+							</HBox>
+							<Title text="Außentemperatur" wrapping="true" />
+							<Label text="In °C" wrapping="true" />
+						</VBox>
+					</VBox>
+				</f:GridListItem>
+			</f:GridList>
 		</content>
 		<footer>
 			<OverflowToolbar>
