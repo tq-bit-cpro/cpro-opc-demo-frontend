@@ -79,21 +79,6 @@
           "pattern": "",
           "name": "home",
           "target": ["home"]
-        },
-        {
-          "pattern": "todo/{todoId}",
-          "name": "todo",
-          "target": ["todo"]
-        },
-        {
-          "pattern": "todo-form",
-          "name": "todo-form",
-          "target": ["todo-form"]
-        },
-        {
-          "pattern": "about",
-          "name": "about",
-          "target": ["about"]
         }
       ],
       "targets": {
@@ -101,21 +86,6 @@
           "viewName": "Home",
           "viewId": "home",
           "viewLevel": 1
-        },
-        "todo": {
-          "viewName": "Todo",
-          "viewId": "todo",
-          "viewLevel": 2
-        },
-        "todo-form": {
-          "viewName": "TodoForm",
-          "viewId": "todo-form",
-          "viewLevel": 2
-        },
-        "about": {
-          "viewName": "About",
-          "viewId": "about",
-          "viewLevel": 2
         }
       }
     }

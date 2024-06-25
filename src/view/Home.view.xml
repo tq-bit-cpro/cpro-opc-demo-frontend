@@ -1,4 +1,4 @@
-<mvc:View controllerName="cpro.ui5.__kunde__.__projekt__.controller.Home" displayBlock="true" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc">
+<mvc:View controllerName="cpro.ui5.__kunde__.__projekt__.controller.Home" displayBlock="true" xmlns:f="sap.f" xmlns:grid="sap.ui.layout.cssgrid" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc">
 	<Page>
 		<customHeader>
 			<OverflowToolbar>
@@ -11,45 +11,61 @@
 		</customHeader>
 
 		<content>
-			<Table id="table-users" inset="false" items="{todo>/collection}">
-				<headerToolbar>
-					<OverflowToolbar>
-						<content>
-							<Title text="{i18n>table-users-title}" />
-							<ToolbarSpacer />
-							<Button icon="sap-icon://excel-attachment" tooltip="{i18n>table-users-toolbar-download}" press="onPressExport" />
-							<Button type="Transparent" tooltip="{i18n>table-users-toolbar-sort}" icon="sap-icon://sort" press="onOpenSorterDialog" />
-							<SearchField width="14rem" liveChange="onSearch" />
-							<Button type="Ghost" icon="sap-icon://add" tooltip="{i18n>table-users-toolbar-new-todo}" press="navToNewTodoForm" />
-								<core:HTML id="react" content='&lt;div&gt;&lt;p&gt;React Component&lt;/p&gt;&lt;/div&gt;'></core:HTML>
-						</content>
-					</OverflowToolbar>
-				</headerToolbar>
-				<columns>
-					<Column width="8em" hAlign="Center">
-						<Text text="{i18n>table-users-column-userid}" />
-					</Column>
-					<Column width="8em" hAlign="Center" minScreenWidth="Tablet" demandPopin="true">
-						<Text text="{i18n>table-users-column-todoId}" />
-					</Column>
-					<Column minScreenWidth="Desktop" demandPopin="true">
-						<Text text="{i18n>table-users-column-todoTitle}" />
-					</Column>
-					<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center">
-						<Text text="{i18n>table-users-column-todoDone}" />
-					</Column>
-				</columns>
-				<items>
-					<ColumnListItem type="Navigation" press="onPressTableItem" vAlign="Middle">
-						<cells>
-							<Text text="{todo>userId}" />
-							<Text text="{todo>id}" />
-							<ObjectIdentifier title="{todo>title}" text="{todo>description}" />
-							<CheckBox selected="{todo>completed}" />
-						</cells>
-					</ColumnListItem>
-				</items>
-			</Table>
+			<f:GridList
+			id="gridList"
+			growing="true"
+			growingThreshold="9">
+			<f:headerToolbar>
+				<Toolbar>
+					<Title text="Halle Süd, Tor 1" />
+					<ToolbarSpacer />
+					<SearchField width="15rem" />
+				</Toolbar>
+			</f:headerToolbar>
+
+			<f:customLayout>
+				<grid:GridBoxLayout boxWidth="12rem" />
+			</f:customLayout>
+
+			<f:GridListItem>
+				<VBox>
+					<VBox class="sapUiSmallMargin">
+						<layoutData>
+							<FlexItemData growFactor="0" shrinkFactor="1" />
+						</layoutData>
+						<HBox justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
+							<core:Icon
+								src="sap-icon://windows-doors"
+								size="2rem"
+								color="Default"
+								class="sapUiSmallMarginBottom" />
+							<ObjectStatus text="{= ${door>/open} ? 'Geöffnet' : 'Geschlossen' }" state="{= ${door>/open} ? 'Success' : 'Warning' }" />
+						</HBox>
+						<Title text="Einfahrt Laderampe" wrapping="true" />
+						<Label text="{= ${door>/open} ? 'Die Laderampe ist befahrbar' : 'Die Laderampe ist geschlossen' }" wrapping="true" />
+					</VBox>
+				</VBox>
+			</f:GridListItem>
+			<f:GridListItem>
+				<VBox>
+					<VBox class="sapUiSmallMargin">
+						<layoutData>
+							<FlexItemData growFactor="0" shrinkFactor="1" />
+						</layoutData>
+						<HBox justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
+							<core:Icon
+								src="sap-icon://shipping-status"
+								size="2rem"
+								color="Default"
+								class="sapUiSmallMarginBottom" />
+							<ObjectStatus text="{door>/trucks}" state="Success" />
+						</HBox>
+						<Title text="Wartende LKW" wrapping="true" />
+						<Label text="Aktuell warten {door>/trucks} Lieferanten" wrapping="true" />
+					</VBox>
+				</VBox>
+			</f:GridListItem>
+		</f:GridList>
 		</content>
 		<footer>
 			<OverflowToolbar>
