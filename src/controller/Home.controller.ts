@@ -42,6 +42,8 @@ export default class HomeController extends BaseController {
 
   private homeDialogs: Record<string, Dialog> = {};
 
+  private lastNotification: number;
+
   onInit() {
     messageModel.register(this);
     halleModel.register(this);
@@ -49,12 +51,19 @@ export default class HomeController extends BaseController {
   }
 
   showDeviceNotification(title: string, text?: string) {
-    Notification.requestPermission().then(() => {
-      new Notification(title, {
-        badge: 'assets/logo.jpg',
-        body: text ?? null,
+    const now = new Date().getTime();
+    const twoMinutes = 2 * 60 * 1000;
+    if(now - this.lastNotification > twoMinutes) {
+      Notification.requestPermission().then(() => {
+        new Notification(title, {
+          badge: 'assets/logo.jpg',
+          body: text ?? null,
+        })
       })
-    })
+    }
+
+
+    this.lastNotification = now
   }
 
   subscribeToHalleEvents() {
@@ -102,6 +111,9 @@ export default class HomeController extends BaseController {
 
       // Event for pressure
       halleModel.getSubscription().addEventListener(machine.nsDruck, (event) => {
+        if(machine.name === 'one' && +event.data > 53) {
+          this.showDeviceNotification('Meldung von Halle 1', 'Druck auf Maschine 1 ist zu hoch! Manueller Eingriff erforderlich!');
+        }
         halleModel.setMachinePressure(name, event.data)
       })
 

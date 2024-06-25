@@ -146,9 +146,9 @@
 								<core:Icon
 									src="sap-icon://bar-chart"
 									size="2rem"
-									color="Default"
+									color="{= ${halle>/machines/one/pressure} > 58 ? 'Critical' : 'Positive' }"
 									class="sapUiSmallMarginBottom" />
-								<ObjectStatus text="{halle>/machines/one/pressure}" />
+								<ObjectStatus text="{halle>/machines/one/pressure}"  state="{= ${halle>/machines/one/pressure} > 58 ? 'Error' : 'Success' }" />
 							</HBox>
 							<Title text="Druck" wrapping="true" />
 							<Label text="in bar" wrapping="true" />
@@ -272,9 +272,9 @@
 								<core:Icon
 									src="sap-icon://bar-chart"
 									size="2rem"
-									color="Default"
+									color="{= ${halle>/machines/two/pressure} > 53 ? 'Critical' : 'Positive' }"
 									class="sapUiSmallMarginBottom" />
-								<ObjectStatus text="{halle>/machines/two/pressure}" />
+								<ObjectStatus text="{halle>/machines/two/pressure}" state="{= ${halle>/machines/two/pressure} > 53 ? 'Error' : 'Success' }" />
 							</HBox>
 							<Title text="Druck" wrapping="true" />
 							<Label text="in bar" wrapping="true" />
@@ -398,9 +398,9 @@
 								<core:Icon
 									src="sap-icon://bar-chart"
 									size="2rem"
-									color="Default"
+									color="{= ${halle>/machines/three/pressure} > 54 ? 'Critical' : 'Positive' }"
 									class="sapUiSmallMarginBottom" />
-								<ObjectStatus text="{halle>/machines/three/pressure}" />
+								<ObjectStatus text="{halle>/machines/three/pressure}" state="{= ${halle>/machines/three/pressure} > 54 ? 'Error' : 'Success' }" />
 							</HBox>
 							<Title text="Druck" wrapping="true" />
 							<Label text="in bar" wrapping="true" />
