@@ -80,7 +80,7 @@
 				growingThreshold="9">
 				<f:headerToolbar>
 					<Toolbar>
-						<Title text="Maschine 1" />
+						<Title text="C-PROD-Mach4-0001" />
 						<ToolbarSpacer />
 					</Toolbar>
 				</f:headerToolbar>
@@ -105,9 +105,9 @@
 								<ObjectStatus text="{= ${halle>/machines/one/ready} ? 'Bereit' : 'Abgestellt' }"
 									state="{= ${halle>/machines/one/ready} ? 'Success' : 'Warning' }" />
 							</HBox>
-							<Title text="Status Maschine 1" wrapping="true" />
+							<Title text="Status C-PROD-Mach4-0001" wrapping="true" />
 							<Label
-								text="{= ${halle>/machines/one/ready} ? 'Maschine 1 produziert' : 'Produktion an Maschine 1 ruht' }"
+								text="{= ${halle>/machines/one/ready} ? 'C-PROD-Mach4-0001 produziert' : 'Produktion an C-PROD-Mach4-0001 ruht' }"
 								wrapping="true" />
 						</VBox>
 					</VBox>
@@ -206,7 +206,7 @@
 				growingThreshold="9">
 				<f:headerToolbar>
 					<Toolbar>
-						<Title text="Maschine 2" />
+						<Title text="C-PROD-Mach4-0002" />
 						<ToolbarSpacer />
 					</Toolbar>
 				</f:headerToolbar>
@@ -231,9 +231,9 @@
 								<ObjectStatus text="{= ${halle>/machines/two/ready} ? 'Bereit' : 'Abgestellt' }"
 									state="{= ${halle>/machines/two/ready} ? 'Success' : 'Warning' }" />
 							</HBox>
-							<Title text="Status Maschine 2" wrapping="true" />
+							<Title text="Status C-PROD-Mach4-0002" wrapping="true" />
 							<Label
-								text="{= ${halle>/machines/two/ready} ? 'Maschine 2 produziert' : 'Produktion an Maschine 2 ruht' }"
+								text="{= ${halle>/machines/two/ready} ? 'C-PROD-Mach4-0002 produziert' : 'Produktion an C-PROD-Mach4-0002 ruht' }"
 								wrapping="true" />
 						</VBox>
 					</VBox>
@@ -332,7 +332,7 @@
 				growingThreshold="9">
 				<f:headerToolbar>
 					<Toolbar>
-						<Title text="Maschine 3" />
+						<Title text="C-PROD-Mach4-0003" />
 						<ToolbarSpacer />
 					</Toolbar>
 				</f:headerToolbar>
@@ -357,9 +357,9 @@
 								<ObjectStatus text="{= ${halle>/machines/three/ready} ? 'Bereit' : 'Abgestellt' }"
 									state="{= ${halle>/machines/three/ready} ? 'Success' : 'Warning' }" />
 							</HBox>
-							<Title text="Status Maschine 3" wrapping="true" />
+							<Title text="Status C-PROD-Mach4-0003" wrapping="true" />
 							<Label
-								text="{= ${halle>/machines/three/ready} ? 'Maschine 3 produziert' : 'Produktion an Maschine 3 ruht' }"
+								text="{= ${halle>/machines/three/ready} ? 'C-PROD-Mach4-0003 produziert' : 'Produktion an C-PROD-Mach4-0003 ruht' }"
 								wrapping="true" />
 						</VBox>
 					</VBox>
