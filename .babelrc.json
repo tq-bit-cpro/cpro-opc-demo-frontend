@@ -1,0 +1,11 @@
+{
+    "ignore": [
+        "**/*.d.ts"
+    ],
+    "presets": [
+        "transform-ui5",
+        "@babel/preset-typescript",
+        "@babel/preset-react"
+    ],
+    "plugins": ["@babel/plugin-syntax-jsx"]
+}
