@@ -12,6 +12,33 @@ export default class DoorModel extends BaseModel<any> {
 
     this.setDoorOpen(true);
     this.setTrucksPassed(0);
+    this.setData({
+      trucks: 0,
+      open: true,
+      machines: {
+        one: {
+          ready: true,
+          innerTemperature: 0,
+          outerTemperature: 0,
+          pressure: 0,
+          producedQuantity: 0,
+        },
+        two: {
+          ready: true,
+          innerTemperature: 0,
+          outerTemperature: 0,
+          pressure: 0,
+          producedQuantity: 0,
+        },
+        three: {
+          ready: true,
+          innerTemperature: 0,
+          outerTemperature: 0,
+          pressure: 0,
+          producedQuantity: 0,
+        }
+      }
+    })
   }
 
   public subscribeToEvents() {
@@ -35,5 +62,25 @@ export default class DoorModel extends BaseModel<any> {
 
   public setTrucksPassed(value: number) {
     this.setProperty('/trucks', value);
+  }
+
+  public setMachineBereitschaft(machine: "one" | "two" | "three", value: boolean) {
+    this.setProperty(`/machines/${machine}/ready`, value);
+  }
+
+  public setMachineGefMengen(machine: "one" | "two" | "three", value: boolean) {
+    this.setProperty(`/machines/${machine}/quantity`, value);
+  }
+
+  public setMachineInnerTemp(machine: "one" | "two" | "three", value: boolean) {
+    this.setProperty(`/machines/${machine}/inner-temp`, value);
+  }
+
+  public setMachineOuterTemp(machine: "one" | "two" | "three", value: boolean) {
+    this.setProperty(`/machines/${machine}/outer-temp`, value);
+  }
+
+  public setMachinePressure(machine: "one" | "two" | "three", value: boolean) {
+    this.setProperty(`/machines/${machine}/pressure`, value);
   }
 }

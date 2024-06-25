@@ -1,4 +1,6 @@
-<mvc:View controllerName="cpro.ui5.__kunde__.__projekt__.controller.Home" displayBlock="true" xmlns:f="sap.f" xmlns:grid="sap.ui.layout.cssgrid" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc">
+<mvc:View controllerName="cpro.ui5.__kunde__.__projekt__.controller.Home" displayBlock="true"
+	xmlns:f="sap.f" xmlns:grid="sap.ui.layout.cssgrid" xmlns="sap.m" xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc">
 	<Page>
 		<customHeader>
 			<OverflowToolbar>
@@ -12,64 +14,195 @@
 
 		<content>
 			<f:GridList
-			id="gridList"
-			growing="true"
-			growingThreshold="9">
-			<f:headerToolbar>
-				<Toolbar>
-					<Title text="Halle Süd, Tor 1" />
-					<ToolbarSpacer />
-					<SearchField width="15rem" />
-				</Toolbar>
-			</f:headerToolbar>
+				class="sapUiContentPadding"
+				id="halle-1"
+				growing="true"
+				growingThreshold="9">
+				<f:headerToolbar>
+					<Toolbar>
+						<Title text="Halle Süd, Tor 1" />
+						<ToolbarSpacer />
+						<SearchField width="15rem" />
+					</Toolbar>
+				</f:headerToolbar>
 
-			<f:customLayout>
-				<grid:GridBoxLayout boxWidth="12rem" />
-			</f:customLayout>
+				<f:customLayout>
+					<grid:GridBoxLayout boxWidth="12rem" />
+				</f:customLayout>
 
-			<f:GridListItem>
-				<VBox>
-					<VBox class="sapUiSmallMargin">
-						<layoutData>
-							<FlexItemData growFactor="0" shrinkFactor="1" />
-						</layoutData>
-						<HBox justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
-							<core:Icon
-								src="sap-icon://windows-doors"
-								size="2rem"
-								color="Default"
-								class="sapUiSmallMarginBottom" />
-							<ObjectStatus text="{= ${door>/open} ? 'Geöffnet' : 'Geschlossen' }" state="{= ${door>/open} ? 'Success' : 'Warning' }" />
-						</HBox>
-						<Title text="Einfahrt Laderampe" wrapping="true" />
-						<Label text="{= ${door>/open} ? 'Die Laderampe ist befahrbar' : 'Die Laderampe ist geschlossen' }" wrapping="true" />
+				<f:GridListItem>
+					<VBox>
+						<VBox class="sapUiSmallMargin">
+							<layoutData>
+								<FlexItemData growFactor="0" shrinkFactor="1" />
+							</layoutData>
+							<HBox justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
+								<core:Icon
+									src="sap-icon://windows-doors"
+									size="2rem"
+									color="Default"
+									class="sapUiSmallMarginBottom" />
+								<ObjectStatus text="{= ${halle>/open} ? 'Geöffnet' : 'Geschlossen' }"
+									state="{= ${halle>/open} ? 'Success' : 'Warning' }" />
+							</HBox>
+							<Title text="Einfahrt Laderampe" wrapping="true" />
+							<Label
+								text="{= ${halle>/open} ? 'Die Laderampe ist befahrbar' : 'Die Laderampe ist geschlossen' }"
+								wrapping="true" />
+						</VBox>
 					</VBox>
-				</VBox>
-			</f:GridListItem>
-			<f:GridListItem>
-				<VBox>
-					<VBox class="sapUiSmallMargin">
-						<layoutData>
-							<FlexItemData growFactor="0" shrinkFactor="1" />
-						</layoutData>
-						<HBox justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
-							<core:Icon
-								src="sap-icon://shipping-status"
-								size="2rem"
-								color="Default"
-								class="sapUiSmallMarginBottom" />
-							<ObjectStatus text="{door>/trucks}" state="Success" />
-						</HBox>
-						<Title text="Wartende LKW" wrapping="true" />
-						<Label text="Aktuell warten {door>/trucks} Lieferanten" wrapping="true" />
+				</f:GridListItem>
+				<f:GridListItem>
+					<VBox>
+						<VBox class="sapUiSmallMargin">
+							<layoutData>
+								<FlexItemData growFactor="0" shrinkFactor="1" />
+							</layoutData>
+							<HBox justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
+								<core:Icon
+									src="sap-icon://shipping-status"
+									size="2rem"
+									color="Default"
+									class="sapUiSmallMarginBottom" />
+								<ObjectStatus text="{halle>/trucks}" state="Success" />
+							</HBox>
+							<Title text="Wartende LKW" wrapping="true" />
+							<Label text="Aktuell warten {halle>/trucks} Lieferanten" wrapping="true" />
+						</VBox>
 					</VBox>
-				</VBox>
-			</f:GridListItem>
-		</f:GridList>
+				</f:GridListItem>
+			</f:GridList>
+
+			<f:GridList
+				class="sapUiContentPadding"
+				id="machine-1"
+				growing="true"
+				growingThreshold="9">
+				<f:headerToolbar>
+					<Toolbar>
+						<Title text="Maschine 1" />
+						<ToolbarSpacer />
+					</Toolbar>
+				</f:headerToolbar>
+
+				<f:customLayout>
+					<grid:GridBoxLayout boxWidth="12rem" />
+				</f:customLayout>
+
+				<!-- List item for readiness -->
+				<f:GridListItem>
+					<VBox>
+						<VBox class="sapUiSmallMargin">
+							<layoutData>
+								<FlexItemData growFactor="0" shrinkFactor="1" />
+							</layoutData>
+							<HBox justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
+								<core:Icon
+									src="sap-icon://machine"
+									size="2rem"
+									color="Default"
+									class="sapUiSmallMarginBottom" />
+								<ObjectStatus text="{= ${halle>/machines/one/ready} ? 'Bereit' : 'Abgestellt' }"
+									state="{= ${halle>/machines/one/ready} ? 'Success' : 'Warning' }" />
+							</HBox>
+							<Title text="Status Maschine 1" wrapping="true" />
+							<Label
+								text="{= ${halle>/machines/one/ready} ? 'Maschine 1 produziert' : 'Produktion an Maschine 1 ruht' }"
+								wrapping="true" />
+						</VBox>
+					</VBox>
+				</f:GridListItem>
+
+				<!-- List item for quantity -->
+				<f:GridListItem>
+					<VBox>
+						<VBox class="sapUiSmallMargin">
+							<layoutData>
+								<FlexItemData growFactor="0" shrinkFactor="1" />
+							</layoutData>
+							<HBox justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
+								<core:Icon
+									src="sap-icon://product"
+									size="2rem"
+									color="Default"
+									class="sapUiSmallMarginBottom" />
+								<ObjectStatus text="{halle>/machines/one/quantity}" />
+							</HBox>
+							<Title text="Produzierte Menge" wrapping="true" />
+							<Label text="Seit dem letzten Rüstvorgang" wrapping="true" />
+						</VBox>
+					</VBox>
+				</f:GridListItem>
+
+
+				<!-- List item for pressure temp -->
+				<f:GridListItem>
+					<VBox>
+						<VBox class="sapUiSmallMargin">
+							<layoutData>
+								<FlexItemData growFactor="0" shrinkFactor="1" />
+							</layoutData>
+							<HBox justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
+								<core:Icon
+									src="sap-icon://bar-chart"
+									size="2rem"
+									color="Default"
+									class="sapUiSmallMarginBottom" />
+								<ObjectStatus text="{halle>/machines/one/pressure}" />
+							</HBox>
+							<Title text="Druck" wrapping="true" />
+							<Label text="in bar" wrapping="true" />
+						</VBox>
+					</VBox>
+				</f:GridListItem>
+
+				<!-- List item for outer temp -->
+				<f:GridListItem>
+					<VBox>
+						<VBox class="sapUiSmallMargin">
+							<layoutData>
+								<FlexItemData growFactor="0" shrinkFactor="1" />
+							</layoutData>
+							<HBox justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
+								<core:Icon
+									src="sap-icon://temperature"
+									size="2rem"
+									color="Default"
+									class="sapUiSmallMarginBottom" />
+								<ObjectStatus text="{halle>/machines/one/inner-temp}" />
+							</HBox>
+							<Title text="Innentemperatur" wrapping="true" />
+							<Label text="in °C" wrapping="true" />
+						</VBox>
+					</VBox>
+				</f:GridListItem>
+
+				<!-- List item for outer temp -->
+				<f:GridListItem>
+					<VBox>
+						<VBox class="sapUiSmallMargin">
+							<layoutData>
+								<FlexItemData growFactor="0" shrinkFactor="1" />
+							</layoutData>
+							<HBox justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
+								<core:Icon
+									src="sap-icon://temperature"
+									size="2rem"
+									color="Default"
+									class="sapUiSmallMarginBottom" />
+								<ObjectStatus text="{halle>/machines/one/outer-temp}" />
+							</HBox>
+							<Title text="Außentemperatur" wrapping="true" />
+							<Label text="In °C" wrapping="true" />
+						</VBox>
+					</VBox>
+				</f:GridListItem>
+			</f:GridList>
 		</content>
 		<footer>
 			<OverflowToolbar>
-				<Button icon="sap-icon://bell" text="{= ${messages>/collection}.length }" visible="{= ${messages>/collection}.length > 0 }" press="toggleMessageManager" />
+				<Button icon="sap-icon://bell" text="{= ${messages>/collection}.length }"
+					visible="{= ${messages>/collection}.length > 0 }" press="toggleMessageManager" />
 				<ToolbarSpacer />
 				<Button icon="sap-icon://hint" type="Ghost" press="onPressInfoButton" />
 				<Button text="{i18n>label-save}" type="Accept" press="onPressSuccessButton" />

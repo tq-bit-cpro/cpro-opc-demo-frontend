@@ -14,7 +14,30 @@ export default class HomeController extends BaseController {
 
   private opcNodeDoorOpen: string = 'ns=1;b=40051TorGeoeffnet';
   private opcNodeTrucksPassed: string = 'ns=1;b=40052EingefahreneLkw';
-  private connectionAttempts: number = 0;
+  private opcMachines = [{
+    name: 'one',
+    nsBereitschaft: 'ns=1;b=40011Bereitschaft',
+    nsThermoInner: 'ns=1;b=40012ThermoInnen',
+    nsThermoOuter: 'ns=1;b=40013ThermoAussen',
+    nsGefertigteMengen: 'ns=1;b=40014GefMengen',
+    nsDruck: 'ns=1;b=40015DruckVorlauf',
+  },
+  {
+    name: 'two',
+    nsBereitschaft: 'ns=1;b=40021Bereitschaft',
+    nsThermoInner: 'ns=1;b=40022ThermoInnen',
+    nsThermoOuter: 'ns=1;b=40023ThermoAussen',
+    nsGefertigteMengen: 'ns=1;b=40024GefMengen',
+    nsDruck: 'ns=1;b=40025DruckVorlauf',
+  },
+  {
+    name: 'three',
+    nsBereitschaft: 'ns=1;b=40031Bereitschaft',
+    nsThermoInner: 'ns=1;b=40032ThermoInnen',
+    nsThermoOuter: 'ns=1;b=40033ThermoAussen',
+    nsGefertigteMengen: 'ns=1;b=40034GefMengen',
+    nsDruck: 'ns=1;b=40035DruckVorlauf',
+  }]
   private timeout: any;
 
   private homeDialogs: Record<string, Dialog> = {};
@@ -38,6 +61,7 @@ export default class HomeController extends BaseController {
     halleModel.subscribeToEvents();
     this.registerDoorEvent();
     this.registerTruckEvent();
+    this.registerMachineEvent();
     this.registerCloseEvent();
   }
 
@@ -58,6 +82,38 @@ export default class HomeController extends BaseController {
         message: `Anzahl eingefahrener Lkw: ${event.data}`,
       })
       halleModel.setTrucksPassed(parseInt(event.data))
+    })
+  }
+
+  registerMachineEvent() {
+    this.opcMachines.forEach(machine => {
+      console.log(`registering event for ${machine.name}`)
+      const name = machine.name as "one" | "two" | "three"
+
+      // Event for readiness
+      halleModel.getSubscription().addEventListener(machine.nsBereitschaft, (event) => {
+        halleModel.setMachineBereitschaft(name, event.data)
+      })
+
+      // Event for quantities
+      halleModel.getSubscription().addEventListener(machine.nsGefertigteMengen, (event) => {
+        halleModel.setMachineGefMengen(name, event.data)
+      })
+
+      // Event for pressure
+      halleModel.getSubscription().addEventListener(machine.nsDruck, (event) => {
+        halleModel.setMachinePressure(name, event.data)
+      })
+
+      // Event for inner temp
+      halleModel.getSubscription().addEventListener(machine.nsThermoInner, (event) => {
+        halleModel.setMachineInnerTemp(name, event.data)
+      })
+
+      // Event for outer temp
+      halleModel.getSubscription().addEventListener(machine.nsThermoOuter, (event) => {
+        halleModel.setMachineOuterTemp(name, event.data)
+      })
     })
   }
 
