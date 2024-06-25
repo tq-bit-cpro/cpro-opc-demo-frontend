@@ -1,6 +1,6 @@
 
 import BaseController from './BaseController';
-import { doorModel, messageModel } from '../model/provider';
+import { halleModel, messageModel } from '../model/provider';
 import Dialog from 'sap/m/Dialog';
 
 /**
@@ -21,8 +21,8 @@ export default class HomeController extends BaseController {
 
   onInit() {
     messageModel.register(this);
-    doorModel.register(this);
-    this.subscribeToDoorEvents()
+    halleModel.register(this);
+    this.subscribeToHalleEvents()
   }
 
   showDeviceNotification(title: string, text?: string) {
@@ -34,36 +34,47 @@ export default class HomeController extends BaseController {
     })
   }
 
-  subscribeToDoorEvents() {
-    doorModel.subscribeToEvents();
-    doorModel.getSubscription().addEventListener(this.opcNodeDoorOpen, (event) => {
+  subscribeToHalleEvents() {
+    halleModel.subscribeToEvents();
+    this.registerDoorEvent();
+    this.registerTruckEvent();
+    this.registerCloseEvent();
+  }
+
+  registerDoorEvent() {
+    halleModel.getSubscription().addEventListener(this.opcNodeDoorOpen, (event) => {
       const msg = `Das Tor von Halle 1 ist jetzt ${event.data === 'true' ? 'geöffnet' : 'geschlossen'}`
       this.showDeviceNotification('Meldung von Halle 1', msg);
       messageModel.addWarningMessage({
         message: msg,
       })
-      doorModel.setDoorOpen(event.data === 'true')
+      halleModel.setDoorOpen(event.data === 'true')
     })
-    doorModel.getSubscription().addEventListener(this.opcNodeTrucksPassed, (event) => {
+  }
+
+  registerTruckEvent() {
+    halleModel.getSubscription().addEventListener(this.opcNodeTrucksPassed, (event) => {
       messageModel.addInfoMessage({
         message: `Anzahl eingefahrener Lkw: ${event.data}`,
       })
-      doorModel.setTrucksPassed(parseInt(event.data))
+      halleModel.setTrucksPassed(parseInt(event.data))
     })
+  }
 
-    doorModel.getSubscription().addEventListener('error', (event) => {
+  registerCloseEvent() {
+    halleModel.getSubscription().addEventListener('error', (event) => {
       if(!this.timeout) {
         this.timeout = setTimeout(() => {
-          this.subscribeToDoorEvents();
+          this.subscribeToHalleEvents();
           this.timeout = null;
         }, 5000)
       }
     })
 
-    doorModel.getSubscription().addEventListener('close', (event) => {
+    halleModel.getSubscription().addEventListener('close', (event) => {
       if(!this.timeout) {
         this.timeout = setTimeout(() => {
-          this.subscribeToDoorEvents();
+          this.subscribeToHalleEvents();
           this.timeout = null;
         }, 5000)
       }

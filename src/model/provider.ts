@@ -1,9 +1,9 @@
-import DoorModel from './Door.model';
+import HalleModel from './Halle.model';
 import ConfigModel from './Config.model';
 import MessageModel from './Message.model';
 
-const doorModel = new DoorModel('door');
+const halleModel = new HalleModel('door');
 const configModel = new ConfigModel('config');
 const messageModel = new MessageModel('messages');
 
-export { doorModel, configModel, messageModel };
+export { halleModel, configModel, messageModel };
